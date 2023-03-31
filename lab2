@@ -1,0 +1,130 @@
+//Lista Condicionais
+//exercicio1
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x;
+    int y;
+
+    printf("Digite dois numeros inteiros:\n");
+    scanf("%d%d",&x,&y);
+
+    if(x>y){
+        printf("%d e maior que %d",x,y);
+    }else{
+        printf("%d e maior que %d",y,x);
+    }
+
+    return 0;
+}
+*/
+
+//exercico2
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+   int x;
+   printf("Digite um numero:\n");
+   scanf("%d",&x);
+
+   if(x>=0){
+    printf("A raiz de %d e:%.2f",x,sqrt(x));
+   }else{
+    printf("O numero e invalido.");
+   }
+
+    return 0;
+}
+*/
+
+//exercicio3
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    float x;
+    printf("Digite um numero real:\n");
+    scanf("%f",&x);
+
+    if(x>=0){
+        printf("A raiz de %.2f e:%.2f",x,sqrt(x));
+    }else{
+    printf("O quadrado de %.2f e %.2f",x,x*x);
+    }
+
+    return 0;
+}
+*/
+
+//EXERCICIO4
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x;
+    printf("Digite um numero:\n");
+    scanf("%d",&x);
+
+    if(x>=0){
+        printf("O quadrado do numero que voce digitou e %d e sua raiz e %f",x*x,sqrt(x));
+    }
+
+    return 0;
+}
+*/
+
+//EXERCICO5
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x;
+    printf("Digite um numero inteiro:\n");
+    scanf("%d",&x);
+
+    if((x%2)==0){
+        printf("O numero que voce digitou e par.");
+    }else{
+        printf("O numero que voce digitou e impar.");
+    }
+
+    return 0;
+}
+*/
+
+//EXERCICIO6
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x;
+    int y;
+
+    printf("Digite dois numeros inteiros:\n");
+    scanf("%d%d",x,y);
+
+    if(x>y){
+        printf("%d e maior e a diferença entre os numero que voce digitou e %d.",x,x-y);
+    }else{
+        printf("%d e maior e a diferença entre os numero que voce digitou e %d.",y,y-x);
+    }
+
+
+    return 0;
+}
