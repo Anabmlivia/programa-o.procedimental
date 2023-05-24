@@ -1,0 +1,508 @@
+//exercicio 1
+/*
+#include <stdio.h>
+
+int dobro(int numero) {
+    return numero * 2;
+}
+
+int main() {
+    int numero = 5;
+    int resultado = dobro(numero);
+    
+    printf("O dobro de %d é %d.\n", numero, resultado);
+    
+    return 0;
+}
+*/
+
+//exercicio 2
+/*
+void data(int dia,int mes,int ano);
+
+int main(){
+
+  int dia;
+  int mes;
+  int ano;
+  
+  printf("Digite o dia:\n");
+  scanf("%d",&dia);
+  printf("Digite o mes atual:\n");
+  scanf("%d",&mes);
+  printf("Digite o ano:\n");
+  scanf("%d",&ano);
+
+  data(dia,mes,ano);
+  
+  return 0;
+  
+}
+
+void data(int dia,int mes,int ano){
+  switch(mes){
+  case 1: printf("%d de Janeiro %d", dia, ano);
+break;
+  switch(mes){
+  case 2: printf("%d de Fevereiro %d", dia, ano);
+break;
+  switch(mes){
+  case 3: printf("%d de Março %d", dia, ano);
+break;
+  switch(mes){
+  case 4: printf("%d de Abril %d", dia, ano);
+break;
+  switch(mes){
+  case 5: printf("%d de Maio %d", dia, ano);
+break;
+  switch(mes){
+  case 6: printf("%d de Junho %d", dia, ano);
+break;
+  switch(mes){
+  case 7: printf("%d de Julho %d", dia, ano);
+break;
+  switch(mes){
+  case 8: printf("%d de Agosto %d", dia, ano);
+break;
+  switch(mes){
+  case 9: printf("%d de Setembro %d", dia, ano);
+    break;
+  switch(mes){
+  case 10: printf("%d de Outubro %d", dia, ano);
+  break;
+  switch(mes){
+  case 11: printf("%d de Novembro %d", dia, ano);
+  break;
+  switch(mes){
+  case 12: printf("%d de Dezembro %d", dia, ano);
+  break;
+    
+  }
+}
+*/
+
+//exercicio 3
+/*
+#include <stdio.h>
+
+int verifica(int numero) {
+    if (numero > 0) {
+        return 1;
+    } else if (numero < 0) {
+        return -1;
+    } else {
+        return 0; 
+    }
+}
+
+int main() {
+    int numero;
+    
+    printf("Digite um número inteiro: ");
+    scanf("%d", &numero);
+    
+    int resultado = verifica(numero);
+    
+    if (resultado == 1) {
+        printf("O número é positivo.\n");
+    } else if (resultado == -1) {
+        printf("O número é negativo.\n");
+    } else {
+        printf("O número é igual a zero.\n");
+    }
+    
+    return 0;
+}
+*/
+
+//exercicio 4
+/*
+#include <stdio.h>
+#include <math.h>
+
+int verificar_quadrado_perfeito(int numero) {
+    if (numero < 0) {
+        return 0; // o número é negativo então não é um quadrado perfeito
+    }
+    
+    int raiz = sqrt(numero);
+    
+    if (raiz * raiz == numero) {
+        return 1; // o número é um quadrado perfeito
+    } else {
+        return 0; // o número não é um quadrado perfeito
+    }
+}
+
+int main() {
+    int numero;
+    
+    printf("Digite um número inteiro: ");
+    scanf("%d", &numero);
+    
+    int resultado = verificar_quadrado_perfeito(numero);
+    
+    if (resultado == 1) {
+        printf("O número é um quadrado perfeito.\n");
+    } else {
+        printf("O número não é um quadrado perfeito.\n");
+    }
+    
+    return 0;
+}
+*/
+
+//exercicio 5 
+/*
+#include <stdio.h>
+
+double calculo_volume_esfera(double raio) {
+    double volume = (4.0/3.0) * 3.14 * raio * raio * raio;
+    return volume;
+}
+
+int main() {
+    double raio;
+    
+    printf("Digite o raio da esfera: ");
+    scanf("%lf", &raio);
+    
+    double volume = calcul0_volume_esfera(raio);
+    
+    printf("O volume da esfera de raio %.2lf é %.2lf\n", raio, volume);
+    
+    return 0;
+}
+*/
+
+//exercicio 6
+/*
+#include <stdio.h>
+
+int converter_para_segundos(int horas, int minutos, int segundos) {
+    int conv_segundos = horas * (3600 + minutos) * (60 + segundos);
+    return conv_segundos;
+}
+
+int main() {
+    int horas;
+    int minutos; 
+    int segundos;
+    
+    printf("Digite as horas: ");
+    scanf("%d", &horas);
+    printf("Digite os minutos: ");
+    scanf("%d", &minutos);
+    printf("Digite os segundos: ");
+    scanf("%d", &segundos);
+    
+    int conv_segundos = converter_para_segundos(horas, minutos, segundos);
+    
+    printf("O tempo total em segundos é: %d\n", conv_segundos);
+    
+    return 0;
+}
+*/
+
+//exercicio 7
+/*
+#include <stdio.h>
+
+double converter_Fahrenheit(double celsius) {
+    double fahrenheit = celsius * (9.0 / 5.0) + 32.0;
+    return fahrenheit;
+}
+
+int main() {
+    double celsius;
+    
+    printf("Digite a temperatura em Celsius: ");
+    scanf("%lf", &celsius);
+    
+    double fahrenheit = converter_Fahrenheit(celsius);
+    
+    printf("A temperatura em Fahrenheit é: %.2lf\n", fahrenheit);
+    
+    return 0;
+}
+*/
+
+//exercicio 8
+/*
+#include <stdio.h>
+#include <math.h>
+
+double calcula_Hipotenusa(double a, double b) {
+    double quadradoA = a * a;
+    double quadradoB = b * b;
+    double soma = quadradoA + quadradoB;
+    double hipotenusa = sqrt(soma);
+    return hipotenusa;
+}
+
+int main() {
+    double catA, catB;
+    
+    printf("Digite o valor do cateto A: ");
+    scanf("%lf", &catA);
+    printf("Digite o valor do cateto B: ");
+    scanf("%lf", &catB);
+    
+    double hipotenusa = calcula_Hipotenusa(catetoA, catetoB);
+    
+    printf("O valor da hipotenusa é: %.2lf\n", hipotenusa);
+    
+    return 0;
+}
+*/
+
+//exercicio 9
+/*
+#include <stdio.h>
+
+double volume_cilindro(double altura, double raio) {
+    double quadrado_raio = raio * raio;
+    double pi = 3.141592;
+    double volume = pi * quadrado_raio * altura;
+    return volume;
+}
+
+int main() {
+    double altura, raio;
+    
+    printf("Digite a altura do cilindro: ");
+    scanf("%lf", &altura);
+    printf("Digite o raio do cilindro: ");
+    scanf("%lf", &raio);
+    
+    double volume =volume_cilindro(altura, raio);
+    
+    printf("O volume do cilindro é: %.2lf\n", volume);
+    
+    return 0;
+}
+*/
+
+//exercicio 10
+/*
+#include <stdio.h>
+
+int verifica_maior(int numero1, int numero2) {
+    if (numero1 > numero2) {
+        return numero1;
+    } else {
+        return numero2;
+    }
+}
+
+int main() {
+    int numero1, numero2;
+    
+    printf("Digite o primeiro número: ");
+    scanf("%d", &numero1);
+    printf("Digite o segundo número: ");
+    scanf("%d", &numero2);
+    
+    int maior =  verifica_maior(numero1, numero2);
+    
+    printf("O maior número é: %d\n", maior);
+    
+    return 0;
+}
+*/
+
+//exercicio 11
+/*
+#include <stdio.h>
+
+double calc_media(double nota1, double nota2, double nota3, char letra) {
+    double media;
+    
+    if (letra == 'A' || letra == 'a') {
+        media = (nota1 + nota2 + nota3) / 3.0;
+    } else if (letra == 'P' || letra == 'p') {
+        media = (nota1 * 5.0 + nota2 * 3.0 + nota3 * 2.0) / 10.0;
+    } else {
+        printf("Letra inválida! Por favor, informe 'A' ou 'P'.\n");
+        return -1.0;  // retorna um erro
+    }
+    
+    return media;
+}
+
+int main() {
+    double nota1, nota2, nota3;
+    char letra;
+    
+    printf("Digite a primeira nota: ");
+    scanf("%lf", &nota1);
+    printf("Digite a segunda nota: ");
+    scanf("%lf", &nota2);
+    printf("Digite a terceira nota: ");
+    scanf("%lf", &nota3);
+    printf("Digite a letra (A ou P): ");
+    scanf(" %c", &letra);
+    
+    double media = calc_media(nota1, nota2, nota3, letra);
+    
+    if (media != -1.0) {
+        printf("A média do aluno é: %.2lf\n", media);
+    }
+    
+    return 0;
+}
+*/
+
+//exercicio 12
+/*
+#include <stdio.h>
+
+int somar(int numero) {
+    if (numero <= 0) {
+        printf("Número inválido!\n");
+        return -1; // retorna um erro
+    }
+    
+    int soma = 0;
+    
+    while (numero > 0) {
+        int algarismo = numero % 10;
+        soma += algarismo;
+        numero /= 10;
+    }
+    
+    return soma;
+}
+
+int main() {
+    int numero;
+    
+    printf("Digite um número inteiro maior que zero: ");
+    scanf("%d", &numero);
+    
+    int resultado = somar(numero);
+    
+    if (resultado != -1) {
+        printf("A soma dos algarismos é: %d\n", resultado);
+    }
+    
+    return 0;
+}
+*/
+
+//exercicio 13
+/*
+#include <stdio.h>
+
+double operacao(double valor1, double valor2, char operador) {
+    double resultado;
+    
+    switch (operador) {
+        case '+':
+            resultado = valor1 + valor2;
+            break;
+        case '-':
+            resultado = valor1 - valor2;
+            break;
+        case '*':
+            resultado = valor1 * valor2;
+            break;
+        case '/':
+            if (valor2 != 0) {
+                resultado = valor1 / valor2;
+            } else {
+                printf("Erro: Divisão por zero não é permitida!\n");
+                return 0; 
+            }
+            break;
+        default:
+            printf("Operador inválido! Use '+', '-', '*' ou '/'.\n");
+            return 0;
+    }
+    
+    return resultado;
+}
+
+int main() {
+    double valor1, valor2;
+    char operador;
+    
+    printf("Digite o primeiro valor: ");
+    scanf("%lf", &valor1);
+    printf("Digite o segundo valor: ");
+    scanf("%lf", &valor2);
+    printf("Digite o operador (+, -, * ou /): ");
+    scanf(" %c", &operador);
+    
+    double resultado = operacao(valor1, valor2, operador);
+    
+    printf("O resultado da operação é: %.2lf\n", resultado);
+    
+    return 0;
+}
+*/
+
+//exercicio 16
+/*
+#include <stdio.h>
+
+void desenho_da_linha(int sequencia) {
+    int i;
+    
+    for (i = 0; i < sequencia; i++) {
+        printf("=");
+    }
+    
+    printf("\n");
+}
+
+int main() {
+    int sequencia;
+    
+    printf("Digite a quantidade de sinais de igual: ");
+    scanf("%d", &sequencia);
+    
+    desenho_da_linha(sequencia);
+    
+    return 0;
+}
+*/
+
+//exercicio 17
+/*
+#include <stdio.h>
+
+int somaint(int numero1, int numero2) {
+    if (numero1 <= 0 || numero2 <= 0) {
+        printf("Os números devem ser positivos!\n");
+        return -1; 
+    }
+    
+    int menor = (numero1 < numero2) ? numero1 : numero2;
+    int maior = (numero1 > numero2) ? numero1 : numero2;
+    int soma = 0;
+    
+    for (int i = menor + 1; i < maior; i++) {
+        soma += i;
+    }
+    
+    return soma;
+}
+
+int main() {
+    int numero1, numero2;
+    
+    printf("Digite o primeiro número: ");
+    scanf("%d", &numero1);
+    printf("Digite o segundo número: ");
+    scanf("%d", &numero2);
+    
+    int resultado = somaint(numero1, numero2);
+    
+    if (resultado != -1) {
+        printf("A soma dos números inteiros entre %d e %d é: %d\n", numero1, numero2, resultado);
+    }
+    
+    return 0;
+}
+*/
