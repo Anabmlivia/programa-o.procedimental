@@ -1,0 +1,223 @@
+//exercicio 1
+/*
+#include <stdio.h>
+
+int main () {
+  
+  float vet[] = {0,1,2,3,4,5,6,7,8,9};
+  float *p;
+  int i;
+  
+  //colocando o conteúdo de vet em p
+  p = vet;
+  
+  for (i = 0; i < 10; i++){
+    
+    printf("O valor %.1f tem endereco  %p\n", *(p+i),(p+i));
+  }
+
+  return 0;
+}
+*/
+//*(p+i) conteudo
+//(p+i) posiçao
+
+//exercicio 2
+/*
+int main() {
+
+  int i, j;
+  float vet[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+  float *p;
+
+  p = vet;
+
+  for (i = 0; i < 9; i++){
+  
+      printf("O valor %.1f tem endereco  %p\n", *(p+i), (p+i));
+  }
+  return 0;
+}
+*/
+
+//exercicio 3
+/*
+#include <stdio.h>
+
+int main() {
+    int array[5];
+    int *ptr = array; // lê o primeiro elemento do array
+
+    printf("Digite 5 elementos inteiros:\n", array);
+    for (int i = 0; i < array; i++) {
+        scanf("%d", ptr + i); // Lê o valor e armazena no endereço do ponteiro deslocado por i
+    }
+
+    printf("O dobro de cada valor lido é:\n");
+    for (int i = 0; i < array; i++) {
+        printf("%d\n", *(ptr + i) * 2); // Imprime o valor do ponteiro deslocado por i, multiplicado por 2
+    }
+
+    return 0;
+}
+*/
+
+//exercicio 4
+/*
+#include <stdio.h>
+
+int main() {
+    int tamanho;
+    printf("Digite o tamanho do array: ");
+    scanf("%d", &tamanho);
+
+    int array[tamanho];
+    int contador = 0;
+
+    printf("Digite os elementos inteiros (digite '0' para parar):\n");
+
+    while (contador < tamanho) {
+        scanf("%d", &array[contador]);
+
+        if (array[contador] == 0) {
+            break;
+        }
+
+        contador++;
+    }
+
+    printf("Endereços das posições com valores pares:\n");
+    for (int i = 0; i < contador; i++) {
+        if (array[i] % 2 == 0) {
+            printf("%p\n", &array[i]);
+        }
+    }
+
+    return 0;
+}
+*/
+
+//exercicio 5
+/*
+#include <stdio.h>
+
+int main() {
+    char str1[100];
+    char str2[100];
+
+    printf("Digite a primeira string: ");
+    scanf("%s", str1);
+
+    printf("Digite a segunda string: ");
+    scanf("%s", str2);
+
+    int found = 0;
+    for (int i = 0; str1[i] != '\0'; i++) {
+        int j = 0;
+        while (str1[i + j] == str2[j]) {
+            if (str2[j + 1] == '\0') {
+                found = 1;
+                break;
+            }
+            j++;
+        }
+        if (found)
+            break;
+    }
+
+    if (found) {
+        printf("A segunda string ocorre dentro da primeira.\n");
+    } else {
+        printf("A segunda string não ocorre dentro da primeira.\n");
+    }
+
+    return 0;
+}
+*/
+/*
+//exercicio 6
+
+#include <stdio.h>
+
+int main() {
+    int array[5];
+    int valor;
+
+    printf("Digite o valor para preencher o array: ");
+    scanf("%d", &valor);
+
+    int *ptr = array; // Ponteiro para o primeiro elemento do array
+
+    while (ptr < array + sizeof(array) / sizeof(int)) {
+        *ptr = valor; // Atribui o valor ao elemento apontado por ptr
+        ptr++; // Move o ponteiro para o próximo elemento
+    }
+
+    printf("Array preenchido:\n");
+    ptr = array; // Reinicia o ponteiro para o primeiro elemento do array
+
+    while (ptr < array + sizeof(array) / sizeof(int)) {
+        printf("%d ", *ptr); // Imprime o valor do elemento apontado por ptr
+        ptr++; // Move o ponteiro para o próximo elemento
+    }
+    printf("\n");
+
+    return 0;
+}
+*/
+
+//exercicio 7
+/*
+#include <stdio.h>
+
+int main() {
+    int array[10];
+
+    printf("Digite 10 elementos inteiros:\n");
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    int *ptr = array;
+    int *minPtr = array;
+    int *maxPtr = array;
+
+    // Encontra o menor e o maior elemento
+    for (int i = 1; i < 10; i++) {
+        if (*ptr < *minPtr) {
+            minPtr = ptr;
+        } else if (*ptr > *maxPtr) {
+            maxPtr = ptr;
+        }
+        ptr++;
+    }
+
+    printf("Menor elemento: %d\n", *minPtr);
+    printf("Maior elemento: %d\n", *maxPtr);
+
+    return 0;
+}
+*/
+
+//exercicio 8
+/*
+#include <stdio.h>
+
+int main() {
+    int valor;
+    int *ptrValor, **ptrPtrValor, ***ptrPtrPtrValor;
+
+    printf("Digite o valor: ");
+    scanf("%d", &valor);
+
+    ptrValor = &valor;
+    ptrPtrValor = &ptrValor;
+    ptrPtrPtrValor = &ptrPtrValor;
+
+    printf("Dobro do valor: %d\n", **ptrValor * 2);
+    printf("Triplo do valor: %d\n", ***ptrPtrValor * 3);
+    printf("Quádruplo do valor: %d\n", ****ptrPtrPtrValor * 4);
+
+    return 0;
+}
+*/
