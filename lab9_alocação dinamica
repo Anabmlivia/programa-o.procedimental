@@ -1,0 +1,1168 @@
+//exercicio 1
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *numeros = (int *)malloc(5 * sizeof(int));
+
+    printf("Digite 5 números:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &numeros[i]);
+    }
+
+    printf("Números digitados:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d\n", numeros[i]);
+    }
+
+    free(numeros);
+
+    return 0;
+}
+*/
+
+//exercicio 2
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int tamanho;
+
+    printf("Digite o tamanho do vetor: ");
+    scanf("%d", &tamanho);
+
+    int *vetor = (int *)malloc(tamanho * sizeof(int));
+
+    printf("Digite os valores do vetor:\n");
+    for (int i = 0; i < tamanho; i++) {
+        scanf("%d", &vetor[i]);
+    }
+
+    printf("Vetor lido:\n");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d\n", vetor[i]);
+    }
+
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//exercicio 3
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int tamanho;
+    int pares = 0, impares = 0;
+
+    printf("Digite o tamanho do vetor: ");
+    scanf("%d", &tamanho);
+
+    int *vetor = (int *)malloc(tamanho * sizeof(int));
+
+    printf("Digite os valores do vetor:\n");
+    for (int i = 0; i < tamanho; i++) {
+        scanf("%d", &vetor[i]);
+        if (vetor[i] % 2 == 0) {
+            pares++;
+        } else {
+            impares++;
+        }
+    }
+
+    printf("Quantidade de números pares: %d\n", pares);
+    printf("Quantidade de números ímpares: %d\n", impares);
+
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//exercicio 4
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *removeVogais(char *str) {
+    int tam = strlen(str);
+    char *novaStr = (char *)malloc((tam + 1) * sizeof(char));
+    int j = 0;
+
+    for (int i = 0; i < tam; i++) {
+        if (str[i] != 'a' && str[i] != 'e' && str[i] != 'i' && str[i] != 'o' && str[i] != 'u' &&
+            str[i] != 'A' && str[i] != 'E' && str[i] != 'I' && str[i] != 'O' && str[i] != 'U') {
+            novaStr[j] = str[i];
+            j++;
+        }
+    }
+
+    novaStr[j] = '\0';
+
+    return novaStr;
+}
+
+int main() {
+    int tamanho;
+
+    printf("Digite o tamanho da string: ");
+    scanf("%d", &tamanho);
+
+    char *string = (char *)malloc((tamanho + 1) * sizeof(char));
+
+    printf("Digite a string: ");
+    scanf(" %s", string);
+
+    char *novaString = removeVogais(string);
+
+    printf("String sem vogais: %s\n", novaString);
+
+    free(string);
+    free(novaString);
+
+    return 0;
+}
+*/
+
+//exercicio 5
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int tamanho;
+
+    printf("Digite o tamanho do vetor: ");
+    scanf("%d", &tamanho);
+
+    int *vetor = (int *)malloc(tamanho * sizeof(int));
+
+    printf("Digite os valores do vetor:\n");
+    for (int i = 0; i < tamanho; i++) {
+        scanf("%d", &vetor[i]);
+    }
+
+    int numero;
+    int contador = 0;
+
+    printf("Digite um número inteiro: ");
+    scanf("%d", &numero);
+
+    for (int i = 0; i < tamanho; i++) {
+        if (vetor[i] % numero == 0) {
+            contador++;
+        }
+    }
+
+    printf("Quantidade de múltiplos de %d no vetor: %d\n", numero, contador);
+
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//exercicio 6
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int tamanho;
+
+    printf("Digite o tamanho da memória em bytes: ");
+    scanf("%d", &tamanho);
+
+    int *memoria = (int *)calloc(tamanho, sizeof(int));
+
+    int opcao, posicao, valor;
+
+    do {
+        printf("\nOpções:\n");
+        printf("1 - Inserir valor em uma posição\n");
+        printf("2 - Consultar valor de uma posição\n");
+        printf("0 - Sair\n");
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Digite a posição: ");
+                scanf("%d", &posicao);
+
+                if (posicao >= 0 && posicao < tamanho) {
+                    printf("Digite o valor: ");
+                    scanf("%d", &valor);
+
+                    memoria[posicao] = valor;
+
+                    printf("Valor %d inserido na posição %d.\n", valor, posicao);
+                } else {
+                    printf("Posição inválida!\n");
+                }
+                break;
+
+            case 2:
+                printf("Digite a posição: ");
+                scanf("%d", &posicao);
+
+                if (posicao >= 0 && posicao < tamanho) {
+                    printf("Valor na posição %d: %d\n", posicao, memoria[posicao]);
+                } else {
+                    printf("Posição inválida!\n");
+                }
+                break;
+
+            case 0:
+                printf("Encerrando o programa.\n");
+                break;
+
+            default:
+                printf("Opção inválida!\n");
+                break;
+        }
+    } while (opcao != 0);
+
+    free(memoria);
+
+    return 0;
+}
+*/
+
+//exercicio 7
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int numerosLoteria[6];
+    int numerosBilhete[6];
+
+    printf("Digite os 6 números sorteados da loteria:\n");
+    for (int i = 0; i < 6; i++) {
+        scanf("%d", &numerosLoteria[i]);
+    }
+
+    printf("Digite os 6 números do seu bilhete:\n");
+    for (int i = 0; i < 6; i++) {
+        scanf("%d", &numerosBilhete[i]);
+    }
+
+    int acertos = 0;
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            if (numerosBilhete[i] == numerosLoteria[j]) {
+                acertos++;
+                break;
+            }
+        }
+    }
+
+    int *numerosCorretos = (int *)malloc(acertos * sizeof(int));
+    int indice = 0;
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            if (numerosBilhete[i] == numerosLoteria[j]) {
+                numerosCorretos[indice] = numerosBilhete[i];
+                indice++;
+                break;
+            }
+        }
+    }
+
+    printf("Números sorteados: ");
+    for (int i = 0; i < 6; i++) {
+        printf("%d ", numerosLoteria[i]);
+    }
+    printf("\n");
+
+    printf("Números corretos: ");
+    for (int i = 0; i < acertos; i++) {
+        printf("%d ", numerosCorretos[i]);
+    }
+    printf("\n");
+
+    free(numerosCorretos);
+
+    return 0;
+}
+*/
+
+//exercicio 8
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *vetor = (int *)calloc(1500, sizeof(int));
+
+    int count = 0;
+    for (int i = 0; i < 1500; i++) {
+        if (vetor[i] == 0) {
+            count++;
+        }
+    }
+
+    printf("Quantidade de zeros no vetor: %d\n", count);
+
+    for (int i = 0; i < 1500; i++) {
+        vetor[i] = i;
+    }
+
+    printf("Primeiros 10 elementos do vetor:\n");
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+
+    printf("Últimos 10 elementos do vetor:\n");
+    for (int i = 1490; i < 1500; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//exercicio 9
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *vetor = NULL;
+    int tamanho = 0;
+    int numero;
+
+    printf("Digite os números (Digite um número negativo para parar): \n");
+    while (1) {
+        scanf("%d", &numero);
+        if (numero < 0) {
+            break;
+        }
+        tamanho++;
+        vetor = (int *)realloc(vetor, tamanho * sizeof(int));
+        vetor[tamanho - 1] = numero;
+    }
+
+    printf("Vetor lido:\n");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//exercicio 10
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int tamanho;
+
+    printf("Digite a quantidade de valores a serem armazenados (no mínimo 10): ");
+    scanf("%d", &tamanho);
+
+    if (tamanho < 10) {
+        printf("Quantidade inválida!\n");
+        return 0;
+    }
+
+    double *vetor = (double *)malloc(tamanho * sizeof(double));
+
+    printf("Valores aleatórios nos 10 primeiros elementos:\n");
+    for (int i = 0; i < 10; i++) {
+        vetor[i] = rand() % 101;
+        printf("%.2lf ", vetor[i]);
+    }
+    printf("\n");
+
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//exercicio 11
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int matricula;
+    char sobrenome[50];
+    int anoNascimento;
+} Aluno;
+
+int main() {
+    int quantidadeAlunos;
+
+    printf("Digite o número de alunos: ");
+    scanf("%d", &quantidadeAlunos);
+
+    Aluno *alunos = (Aluno *)malloc(quantidadeAlunos * sizeof(Aluno));
+
+    for (int i = 0; i < quantidadeAlunos; i++) {
+        printf("Aluno %d:\n", i + 1);
+        printf("Digite a matrícula: ");
+        scanf("%d", &alunos[i].matricula);
+        printf("Digite o sobrenome: ");
+        scanf("%s", alunos[i].sobrenome);
+        printf("Digite o ano de nascimento: ");
+        scanf("%d", &alunos[i].anoNascimento);
+        printf("\n");
+    }
+
+    printf("Dados dos alunos:\n");
+    for (int i = 0; i < quantidadeAlunos; i++) {
+        printf("Aluno %d:\n", i + 1);
+        printf("Matrícula: %d\n", alunos[i].matricula);
+        printf("Sobrenome: %s\n", alunos[i].sobrenome);
+        printf("Ano de Nascimento: %d\n", alunos[i].anoNascimento);
+        printf("\n");
+    }
+
+    free(alunos);
+
+    return 0;
+}
+*/
+
+//exercicio 12
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    int codigo;
+    char nome[50];
+    int quantidade;
+    float preco;
+} Produto;
+
+int main() {
+    int quantidadeProdutos;
+
+    printf("Digite o número de produtos: ");
+    scanf("%d", &quantidadeProdutos);
+
+    Produto *produtos = (Produto *)malloc(quantidadeProdutos * sizeof(Produto));
+
+    Produto produtoMaiorPreco;
+    produtoMaiorPreco.preco = 0.0;
+
+    Produto produtoMaiorQuantidade;
+    produtoMaiorQuantidade.quantidade = 0;
+
+    for (int i = 0; i < quantidadeProdutos; i++) {
+        printf("Produto %d:\n", i + 1);
+        printf("Digite o código: ");
+        scanf("%d", &produtos[i].codigo);
+        printf("Digite o nome: ");
+        scanf("%s", produtos[i].nome);
+        printf("Digite a quantidade: ");
+        scanf("%d", &produtos[i].quantidade);
+        printf("Digite o preço: ");
+        scanf("%f", &produtos[i].preco);
+        printf("\n");
+
+        if (produtos[i].preco > produtoMaiorPreco.preco) {
+            produtoMaiorPreco = produtos[i];
+        }
+
+        if (produtos[i].quantidade > produtoMaiorQuantidade.quantidade) {
+            produtoMaiorQuantidade = produtos[i];
+        }
+    }
+
+    printf("Produto com maior preço de venda:\n");
+    printf("Código: %d\n", produtoMaiorPreco.codigo);
+    printf("Nome: %s\n", produtoMaiorPreco.nome);
+    printf("Quantidade: %d\n", produtoMaiorPreco.quantidade);
+    printf("Preço: %.2f\n", produtoMaiorPreco.preco);
+    printf("\n");
+
+    printf("Produto com maior quantidade disponível no estoque:\n");
+    printf("Código: %d\n", produtoMaiorQuantidade.codigo);
+    printf("Nome: %s\n", produtoMaiorQuantidade.nome);
+    printf("Quantidade: %d\n", produtoMaiorQuantidade.quantidade);
+    printf("Preço: %.2f\n", produtoMaiorQuantidade.preco);
+    printf("\n");
+
+    free(produtos);
+
+    return 0;
+}
+*/
+
+//exercicio 13
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int verificaValorMatriz(int **matriz, int linhas, int colunas, int valor) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            if (matriz[i][j] == valor) {
+                return 1; // Valor encontrado na matriz
+            }
+        }
+    }
+    return 0; // Valor não encontrado na matriz
+}
+
+int main() {
+    int linhas, colunas;
+
+    printf("Digite o número de linhas da matriz: ");
+    scanf("%d", &linhas);
+    printf("Digite o número de colunas da matriz: ");
+    scanf("%d", &colunas);
+
+    int **matriz = (int **)malloc(linhas * sizeof(int *));
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = (int *)malloc(colunas * sizeof(int));
+    }
+
+    printf("Digite os elementos da matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    int valor;
+    printf("Digite o valor a ser verificado na matriz: ");
+    scanf("%d", &valor);
+
+    if (verificaValorMatriz(matriz, linhas, colunas, valor)) {
+        printf("O valor %d está presente na matriz.\n", valor);
+    } else {
+        printf("O valor %d não está presente na matriz.\n", valor);
+    }
+
+    // Liberar memória alocada para a matriz
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    return 0;
+}
+*/
+
+//exercicio 14
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void exibirMatriz(double **matriz, int linhas, int colunas) {
+    printf("Matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("%.2lf ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int linhas, colunas;
+
+    printf("Digite o número de linhas da matriz: ");
+    scanf("%d", &linhas);
+    printf("Digite o número de colunas da matriz: ");
+    scanf("%d", &colunas);
+
+    double **matriz = (double **)malloc(linhas * sizeof(double *));
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = (double *)malloc(colunas * sizeof(double));
+    }
+
+    printf("Digite os elementos da matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            scanf("%lf", &matriz[i][j]);
+        }
+    }
+
+    exibirMatriz(matriz, linhas, colunas);
+
+    // Liberar memória alocada para a matriz
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    return 0;
+}
+*/
+
+//exercicio 15
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void encontraMaioresNumeros(int **matriz, int linhas, int colunas) {
+    int maioresNumeros[3] = {0};
+    int linhaMaiores[3] = {0};
+    int colunaMaiores[3] = {0};
+
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            int numero = matriz[i][j];
+            if (numero > maioresNumeros[0]) {
+                maioresNumeros[2] = maioresNumeros[1];
+                linhaMaiores[2] = linhaMaiores[1];
+                colunaMaiores[2] = colunaMaiores[1];
+
+                maioresNumeros[1] = maioresNumeros[0];
+                linhaMaiores[1] = linhaMaiores[0];
+                colunaMaiores[1] = colunaMaiores[0];
+
+                maioresNumeros[0] = numero;
+                linhaMaiores[0] = i;
+                colunaMaiores[0] = j;
+            } else if (numero > maioresNumeros[1]) {
+                maioresNumeros[2] = maioresNumeros[1];
+                linhaMaiores[2] = linhaMaiores[1];
+                colunaMaiores[2] = colunaMaiores[1];
+
+                maioresNumeros[1] = numero;
+                linhaMaiores[1] = i;
+                colunaMaiores[1] = j;
+            } else if (numero > maioresNumeros[2]) {
+                maioresNumeros[2] = numero;
+                linhaMaiores[2] = i;
+                colunaMaiores[2] = j;
+            }
+        }
+    }
+
+    printf("Os três maiores números da matriz estão nas seguintes posições:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("Número: %d, Linha: %d, Coluna: %d\n", maioresNumeros[i], linhaMaiores[i], colunaMaiores[i]);
+    }
+}
+
+int main() {
+    int linhas, colunas;
+
+    printf("Digite o número de linhas da matriz: ");
+    scanf("%d", &linhas);
+    printf("Digite o número de colunas da matriz: ");
+    scanf("%d", &colunas);
+
+    int **matriz = (int **)malloc(linhas * sizeof(int *));
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = (int *)malloc(colunas * sizeof(int));
+    }
+
+    printf("Digite os elementos da matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    encontraMaioresNumeros(matriz, linhas, colunas);
+
+    // Liberar memória alocada para a matriz
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    return 0;
+}
+*/
+
+//exercicio 16
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void exibirMatriz(int **matriz, int linhas, int colunas) {
+    printf("Matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void exibirMatrizTransposta(int **matriz, int linhas, int colunas) {
+    printf("Matriz Transposta:\n");
+    for (int i = 0; i < colunas; i++) {
+        for (int j = 0; j < linhas; j++) {
+            printf("%d ", matriz[j][i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int linhas, colunas;
+
+    printf("Digite o número de linhas da matriz: ");
+    scanf("%d", &linhas);
+    printf("Digite o número de colunas da matriz: ");
+    scanf("%d", &colunas);
+
+    int **matriz = (int **)malloc(linhas * sizeof(int *));
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = (int *)malloc(colunas * sizeof(int));
+    }
+
+    printf("Digite os elementos da matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    exibirMatriz(matriz, linhas, colunas);
+    exibirMatrizTransposta(matriz, linhas, colunas);
+
+    // Liberar memória alocada para a matriz
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    return 0;
+}
+*/
+
+//exercicio 17
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void exibirVetor(int *vetor, int tamanho) {
+    printf("Vetor: ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int tamanhoInicial = 10;
+    int incremento = 10;
+    int *vetor = (int *)malloc(tamanhoInicial * sizeof(int));
+    int tamanhoAtual = 0;
+
+    printf("Digite os números (digite 0 para encerrar): \n");
+    int numero;
+    scanf("%d", &numero);
+
+    while (numero != 0) {
+        vetor[tamanhoAtual] = numero;
+        tamanhoAtual++;
+
+        if (tamanhoAtual % tamanhoInicial == 0) {
+            // Vetor cheio, expandir dinamicamente
+            int *novoVetor = (int *)malloc((tamanhoAtual + incremento) * sizeof(int));
+
+            // Copiar valores do vetor anterior para o novo vetor
+            for (int i = 0; i < tamanhoAtual; i++) {
+                novoVetor[i] = vetor[i];
+            }
+
+            // Liberar memória do vetor anterior
+            free(vetor);
+
+            // Atualizar ponteiro do vetor para o novo vetor
+            vetor = novoVetor;
+        }
+
+        scanf("%d", &numero);
+    }
+
+    exibirVetor(vetor, tamanhoAtual);
+
+    // Liberar memória alocada para o vetor
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//exercicio 18
+
+//bloco a 
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int tamanho = 1024;
+    char *vetor = (char *)malloc(tamanho * sizeof(char));
+
+    printf("Alocação dinâmica de vetor de 1024 bytes concluída.\n");
+
+    // Liberar memória alocada para o vetor
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//bloco b
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int linhas = 10;
+    int colunas = 10;
+    int **matriz = (int **)malloc(linhas * sizeof(int *));
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = (int *)malloc(colunas * sizeof(int));
+    }
+
+    printf("Alocação dinâmica de matriz de inteiros 10x10 concluída.\n");
+
+    // Liberar memória alocada para a matriz
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    return 0;
+}
+*/
+
+//bloco c
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    char nome[30];
+    int codigo;
+    float preco;
+} Registro;
+
+int main() {
+    int tamanho = 50;
+    Registro *vetor = (Registro *)malloc(tamanho * sizeof(Registro));
+
+    printf("Alocação dinâmica de vetor de registros concluída.\n");
+
+    // Liberar memória alocada para o vetor
+    free(vetor);
+
+    return 0;
+}
+*/
+
+//bloco d
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int linhas = 100;
+    int caracteresPorLinha = 80;
+    char **texto = (char **)malloc(linhas * sizeof(char *));
+    for (int i = 0; i < linhas; i++) {
+        texto[i] = (char *)malloc((caracteresPorLinha + 1) * sizeof(char));
+    }
+
+    printf("Alocação dinâmica de texto de até 100 linhas com até 80 caracteres em cada linha concluída.\n");
+
+    // Liberar memória alocada para o texto
+    for (int i = 0; i < linhas; i++) {
+        free(texto[i]);
+    }
+    free(texto);
+
+    return 0;
+}
+*/
+
+//exercicio 19
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NOMES 5
+#define TAMANHO_NOME 31
+
+void gravarNome(char matriz[MAX_NOMES][TAMANHO_NOME], int linha) {
+    printf("Digite o nome: ");
+    scanf("%s", matriz[linha]);
+    printf("Nome gravado na linha %d.\n", linha);
+}
+
+void apagarNome(char matriz[MAX_NOMES][TAMANHO_NOME], int linha) {
+    matriz[linha][0] = '\0';
+    printf("Nome apagado na linha %d.\n", linha);
+}
+
+void substituirNome(char matriz[MAX_NOMES][TAMANHO_NOME], int linha) {
+    printf("Digite o novo nome: ");
+    scanf("%s", matriz[linha]);
+    printf("Nome substituído na linha %d.\n", linha);
+}
+
+void apagarNomePorBusca(char matriz[MAX_NOMES][TAMANHO_NOME], int numNomes) {
+    char nome[TAMANHO_NOME];
+    printf("Digite o nome a ser apagado: ");
+    scanf("%s", nome);
+
+    for (int i = 0; i < numNomes; i++) {
+        if (strcmp(matriz[i], nome) == 0) {
+            matriz[i][0] = '\0';
+            printf("Nome apagado na linha %d.\n", i);
+            return;
+        }
+    }
+
+    printf("Nome não encontrado.\n");
+}
+
+void recuperarNome(char matriz[MAX_NOMES][TAMANHO_NOME], int linha) {
+    printf("Nome na linha %d: %s\n", linha, matriz[linha]);
+}
+
+int main() {
+    char matriz[MAX_NOMES][TAMANHO_NOME];
+    int opcao, linha;
+
+    for (int i = 0; i < MAX_NOMES; i++) {
+        matriz[i][0] = '\0';
+    }
+
+    while (1) {
+        printf("\nEscolha uma opção:\n");
+        printf("1 - Gravar nome em uma linha da matriz\n");
+        printf("2 - Apagar nome em uma linha da matriz\n");
+        printf("3 - Substituir nome em uma linha da matriz\n");
+        printf("4 - Apagar nome por busca\n");
+        printf("5 - Recuperar nome de uma linha da matriz\n");
+        printf("0 - Sair\n");
+        printf("Opção: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 0) {
+            break;
+        }
+
+        printf("Digite a linha (0 a %d): ", MAX_NOMES - 1);
+        scanf("%d", &linha);
+
+        if (linha < 0 || linha >= MAX_NOMES) {
+            printf("Linha inválida.\n");
+            continue;
+        }
+
+        switch (opcao) {
+            case 1:
+                gravarNome(matriz, linha);
+                break;
+            case 2:
+                apagarNome(matriz, linha);
+                break;
+            case 3:
+                substituirNome(matriz, linha);
+                break;
+            case 4:
+                apagarNomePorBusca(matriz, MAX_NOMES);
+                break;
+            case 5:
+                recuperarNome(matriz, linha);
+                break;
+            default:
+                printf("Opção inválida.\n");
+                break;
+        }
+    }
+
+    return 0;
+}
+*/
+
+//exercicio 20
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+typedef struct {
+    char nome[30];
+    int posX;
+    int posY;
+} Cidade;
+
+float calcularDistancia(Cidade cidade1, Cidade cidade2) {
+    int deltaX = cidade2.posX - cidade1.posX;
+    int deltaY = cidade2.posY - cidade1.posY;
+    return sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+
+int main() {
+    int numCidades;
+
+    printf("Digite o número de cidades: ");
+    scanf("%d", &numCidades);
+
+    Cidade *cidades = (Cidade *)malloc(numCidades * sizeof(Cidade));
+    for (int i = 0; i < numCidades; i++) {
+        printf("Cidade %d:\n", i + 1);
+        printf("Nome: ");
+        scanf("%s", cidades[i].nome);
+        printf("Posição X: ");
+        scanf("%d", &cidades[i].posX);
+        printf("Posição Y: ");
+        scanf("%d", &cidades[i].posY);
+    }
+
+    float **distancias = (float **)malloc(numCidades * sizeof(float *));
+    for (int i = 0; i < numCidades; i++) {
+        distancias[i] = (float *)malloc(numCidades * sizeof(float));
+        for (int j = 0; j < numCidades; j++) {
+            distancias[i][j] = calcularDistancia(cidades[i], cidades[j]);
+        }
+    }
+
+    printf("\nMatriz de distâncias:\n");
+    for (int i = 0; i < numCidades; i++) {
+        for (int j = 0; j < numCidades; j++) {
+            printf("%.2f\t", distancias[i][j]);
+        }
+        printf("\n");
+    }
+
+    int cidade1, cidade2;
+    printf("\nDigite o número de duas cidades (entre 1 e %d): ", numCidades);
+    scanf("%d %d", &cidade1, &cidade2);
+
+    if (cidade1 < 1 || cidade1 > numCidades || cidade2 < 1 || cidade2 > numCidades) {
+        printf("Cidade inválida.\n");
+    } else {
+        float distancia = distancias[cidade1 - 1][cidade2 - 1];
+        printf("Distância entre a cidade %d e a cidade %d: %.2f\n", cidade1, cidade2, distancia);
+    }
+
+    // Liberar memória alocada
+    for (int i = 0; i < numCidades; i++) {
+        free(distancias[i]);
+    }
+    free(distancias);
+    free(cidades);
+
+    return 0;
+}
+*/
+
+//exercicio 21
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void lerMatriz(int **matriz, int linhas, int colunas) {
+    printf("Digite os elementos da matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+}
+
+void multiplicarMatrizes(int **matrizA, int linhasA, int colunasA, int **matrizB, int linhasB, int colunasB, int **produto) {
+    for (int i = 0; i < linhasA; i++) {
+        for (int j = 0; j < colunasB; j++) {
+            produto[i][j] = 0;
+            for (int k = 0; k < colunasA; k++) {
+                produto[i][j] += matrizA[i][k] * matrizB[k][j];
+            }
+        }
+    }
+}
+
+void imprimirMatriz(int **matriz, int linhas, int colunas) {
+    printf("Matriz:\n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("%d\t", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int a, b, c, d;
+
+    printf("Digite as dimensões das matrizes (a, b, c, d): ");
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+
+    if (b != c) {
+        printf("As dimensões das matrizes não são compatíveis para multiplicação.\n");
+        return 0;
+    }
+
+    int **matrizA = (int **)malloc(a * sizeof(int *));
+    for (int i = 0; i < a; i++) {
+        matrizA[i] = (int *)malloc(b * sizeof(int));
+    }
+
+    int **matrizB = (int **)malloc(c * sizeof(int *));
+    for (int i = 0; i < c; i++) {
+        matrizB[i] = (int *)malloc(d * sizeof(int));
+    }
+
+    lerMatriz(matrizA, a, b);
+    lerMatriz(matrizB, c, d);
+
+    int **produto = (int **)malloc(a * sizeof(int *));
+    for (int i = 0; i < a; i++) {
+        produto[i] = (int *)malloc(d * sizeof(int));
+    }
+
+    multiplicarMatrizes(matrizA, a, b, matrizB, c, d, produto);
+
+    imprimirMatriz(matrizA, a, b);
+    imprimirMatriz(matrizB, c, d);
+    imprimirMatriz(produto, a, d);
+
+    // Liberar memória alocada
+    for (int i = 0; i < a; i++) {
+        free(matrizA[i]);
+    }
+    free(matrizA);
+
+    for (int i = 0; i < c; i++) {
+        free(matrizB[i]);
+    }
+    free(matrizB);
+
+    for (int i = 0; i < a; i++) {
+        free(produto[i]);
+    }
+    free(produto);
+
+    return 0;
+}
+*/
+
