@@ -1,0 +1,2274 @@
+//exercicio 1
+/*
+#include <stdio.h>
+
+int main() {
+    FILE *arquivo;
+    char caractere;
+
+    // Cria/abre o arquivo para escrita
+    arquivo = fopen("arq.txt", "w");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    printf("Digite os caracteres a serem gravados no arquivo (digite '0' para sair):\n");
+
+    // Loop para gravar caracteres no arquivo
+    while (1) {
+        scanf(" %c", &caractere);
+        if (caractere == '0') {
+            break;
+        }
+        fputc(caractere, arquivo);
+    }
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    printf("Caracteres gravados no arquivo:\n");
+
+    // Abre o arquivo para leitura
+    arquivo = fopen("arq.txt", "r");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Lê e imprime os caracteres do arquivo
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        printf("%c", caractere);
+    }
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    return 0;
+}
+*/
+
+//exercicio 2
+/*
+#include <stdio.h>
+
+int main() {
+    FILE *arquivo;
+    char caractere;
+    int contadorLinhas = 0;
+
+    // Abre o arquivo para leitura
+    arquivo = fopen("arquivo.txt", "r");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Conta o número de linhas no arquivo
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        if (caractere == '\n') {
+            contadorLinhas++;
+        }
+    }
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    printf("O arquivo possui %d linha(s).\n", contadorLinhas);
+
+    return 0;
+}
+*/
+
+//exercicio 3
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *arquivo;
+    char caractere;
+    int contadorVogais = 0;
+
+    // Abre o arquivo para leitura
+    arquivo = fopen("arquivo.txt", "r");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Conta o número de vogais no arquivo
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        if (tolower(caractere) == 'a' || tolower(caractere) == 'e' || tolower(caractere) == 'i' ||
+            tolower(caractere) == 'o' || tolower(caractere) == 'u') {
+            contadorVogais++;
+        }
+    }
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    printf("O arquivo possui %d vogais.\n", contadorVogais);
+
+    return 0;
+}
+*/
+
+//exercicio 4
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *arquivo;
+    char caractere;
+    int contadorVogais = 0, contadorConsoantes = 0;
+
+    // Abre o arquivo para leitura
+    arquivo = fopen("arquivo.txt", "r");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Conta o número de vogais e consoantes no arquivo
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        if (isalpha(caractere)) {  // Verifica se é uma letra
+            caractere = tolower(caractere);  // Converte para minúscula para facilitar a comparação
+
+            if (caractere == 'a' || caractere == 'e' || caractere == 'i' ||
+                caractere == 'o' || caractere == 'u') {
+                contadorVogais++;
+            } else {
+                contadorConsoantes++;
+            }
+        }
+    }
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    printf("O arquivo possui %d vogais e %d consoantes.\n", contadorVogais, contadorConsoantes);
+
+    return 0;
+}
+*/
+//exercicio 5
+/*
+#include <stdio.h>
+
+int main() {
+    FILE *arquivo;
+    char caractere, caractereBusca;
+    int contadorCaractere = 0;
+
+    printf("Digite o caractere a ser buscado: ");
+    scanf(" %c", &caractereBusca);
+
+    // Abre o arquivo para leitura
+    arquivo = fopen("arquivo.txt", "r");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Conta o número de ocorrências do caractere no arquivo
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        if (caractere == caractereBusca) {
+            contadorCaractere++;
+        }
+    }
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    printf("O caractere '%c' ocorre %d vez(es) no arquivo.\n", caractereBusca, contadorCaractere);
+
+    return 0;
+}
+*/
+
+//exercicio 6
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *arquivo;
+    char caractere;
+    int contadorLetras[26] = {0};  // Inicializa o array com zeros
+
+    // Abre o arquivo para leitura
+    arquivo = fopen("arquivo.txt", "r");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Conta o número de ocorrências de cada letra do alfabeto no arquivo
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        if (isalpha(caractere)) {  // Verifica se é uma letra
+            caractere = tolower(caractere);  // Converte para minúscula para facilitar a contagem
+
+            int indice = caractere - 'a';  // Obtém o índice da letra no array
+
+            contadorLetras[indice]++;
+        }
+    }
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    // Imprime o número de ocorrências de cada letra
+    for (int i = 0; i < 26; i++) {
+        char letra = 'a' + i;
+        printf("A letra '%c' ocorre %d vez(es) no arquivo.\n", letra, contadorLetras[i]);
+    }
+
+    return 0;
+}
+*/
+//exercicio 7
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *arquivoEntrada, *arquivoSaida;
+    char caractere;
+
+    // Abre o arquivo de entrada para leitura
+    arquivoEntrada = fopen("arquivo.txt", "r");
+
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    // Abre o arquivo de saída para escrita
+    arquivoSaida = fopen("arquivo_saida.txt", "w");
+
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        return 1;
+    }
+
+    // Lê o arquivo de entrada, substitui as vogais por '*' e escreve no arquivo de saída
+    while ((caractere = fgetc(arquivoEntrada)) != EOF) {
+        if (tolower(caractere) == 'a' || tolower(caractere) == 'e' || tolower(caractere) == 'i' ||
+            tolower(caractere) == 'o' || tolower(caractere) == 'u') {
+            fputc('*', arquivoSaida);
+        } else {
+            fputc(caractere, arquivoSaida);
+        }
+    }
+
+    // Fecha os arquivos
+    fclose(arquivoEntrada);
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 8
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *arquivoEntrada, *arquivoSaida;
+    char caractere;
+
+    char nomeArquivoEntrada[50];
+    char nomeArquivoSaida[50];
+
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", nomeArquivoEntrada);
+
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", nomeArquivoSaida);
+
+    // Abre o arquivo de entrada para leitura
+    arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    // Abre o arquivo de saída para escrita
+    arquivoSaida = fopen(nomeArquivoSaida, "w");
+
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        return 1;
+    }
+
+    // Lê o arquivo de entrada, converte letras minúsculas para maiúsculas e escreve no arquivo de saída
+    while ((caractere = fgetc(arquivoEntrada)) != EOF) {
+        fputc(toupper(caractere), arquivoSaida);
+    }
+
+    // Fecha os arquivos
+    fclose(arquivoEntrada);
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 9
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *arquivoEntrada, *arquivoSaida;
+    char caractere;
+
+    char nomeArquivoEntrada[50];
+    char nomeArquivoSaida[50];
+
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", nomeArquivoEntrada);
+
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", nomeArquivoSaida);
+
+    // Abre o arquivo de entrada para leitura
+    arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    // Abre o arquivo de saída para escrita
+    arquivoSaida = fopen(nomeArquivoSaida, "w");
+
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        return 1;
+    }
+
+    // Lê o arquivo de entrada, converte letras minúsculas para maiúsculas e escreve no arquivo de saída
+    while ((caractere = fgetc(arquivoEntrada)) != EOF) {
+        fputc(toupper(caractere), arquivoSaida);
+    }
+
+    // Fecha os arquivos
+    fclose(arquivoEntrada);
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 10
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NOME_CIDADE 41
+
+int main() {
+    char nomeArquivoEntrada[100];
+    char nomeArquivoSaida[100];
+    char nomeCidade[MAX_NOME_CIDADE];
+    int numHabitantes;
+    char cidadeMaisPopulosa[MAX_NOME_CIDADE];
+    int habitantesMaisPopulosos = 0;
+
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", nomeArquivoEntrada);
+
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", nomeArquivoSaida);
+
+    FILE *arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    // Ler o arquivo de entrada e encontrar a cidade mais populosa
+    while (fgets(nomeCidade, MAX_NOME_CIDADE, arquivoEntrada) != NULL) {
+        nomeCidade[strcspn(nomeCidade, "\n")] = '\0';  // Remover o caractere de nova linha
+
+        fscanf(arquivoEntrada, "%d\n", &numHabitantes);
+
+        if (numHabitantes > habitantesMaisPopulosos) {
+            habitantesMaisPopulosos = numHabitantes;
+            strcpy(cidadeMaisPopulosa, nomeCidade);
+        }
+    }
+
+    fclose(arquivoEntrada);
+
+    FILE *arquivoSaida = fopen(nomeArquivoSaida, "w");
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        return 1;
+    }
+
+    // Escrever a cidade mais populosa no arquivo de saída
+    fprintf(arquivoSaida, "Cidade mais populosa: %s\n", cidadeMaisPopulosa);
+    fprintf(arquivoSaida, "Número de habitantes: %d\n", habitantesMaisPopulosos);
+
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída gerado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 11
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    char nomeArquivo[100];
+    char palavra[100];
+    char palavraArquivo[100];
+    int ocorrencias = 0;
+
+    printf("Digite o nome do arquivo: ");
+    scanf("%s", nomeArquivo);
+
+    printf("Digite a palavra a ser buscada: ");
+    scanf("%s", palavra);
+
+    FILE *arquivo = fopen(nomeArquivo, "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    while (fscanf(arquivo, "%s", palavraArquivo) == 1) {
+        if (strcmp(palavra, palavraArquivo) == 0) {
+            ocorrencias++;
+        }
+    }
+
+    fclose(arquivo);
+
+    printf("A palavra '%s' ocorre %d vezes no arquivo.\n", palavra, ocorrencias);
+
+    return 0;
+}
+*/
+
+//exercicio 12
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main() {
+    char nomeArquivo[100];
+    FILE *arquivo;
+    char caractere;
+    int numCaracteres = 0;
+    int numLinhas = 0;
+    int numPalavras = 0;
+    int palavraAtual = 0;
+
+    printf("Digite o nome do arquivo: ");
+    scanf("%s", nomeArquivo);
+
+    arquivo = fopen(nomeArquivo, "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        numCaracteres++;
+
+        if (caractere == '\n') {
+            numLinhas++;
+        }
+
+        if (caractere == ' ' || caractere == '\n' || caractere == '\t') {
+            palavraAtual = 0;
+        } else if (!palavraAtual) {
+            palavraAtual = 1;
+            numPalavras++;
+        }
+    }
+
+    fclose(arquivo);
+
+    printf("Número de caracteres: %d\n", numCaracteres);
+    printf("Número de linhas: %d\n", numLinhas);
+    printf("Número de palavras: %d\n", numPalavras);
+
+    return 0;
+}
+*/
+//exercicio 13
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char nomeArquivo[100];
+    FILE *arquivo;
+    char nome[100];
+    char telefone[20];
+
+    printf("Digite o nome do arquivo: ");
+    scanf("%s", nomeArquivo);
+
+    arquivo = fopen(nomeArquivo, "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    printf("Digite os nomes e telefones (digite 0 para finalizar):\n");
+
+    while (1) {
+        printf("Nome: ");
+        scanf("%s", nome);
+
+        if (nome[0] == '0') {
+            break;
+        }
+
+        printf("Telefone: ");
+        scanf("%s", telefone);
+
+        fprintf(arquivo, "%s %s\n", nome, telefone);
+    }
+
+    fclose(arquivo);
+
+    printf("Arquivo criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 14
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+typedef struct {
+    char nome[100];
+    int dia;
+    int mes;
+    int ano;
+} Pessoa;
+
+int calcularIdade(int diaAtual, int mesAtual, int anoAtual, int diaNascimento, int mesNascimento, int anoNascimento) {
+    int idade = anoAtual - anoNascimento;
+
+    if (mesAtual < mesNascimento || (mesAtual == mesNascimento && diaAtual < diaNascimento)) {
+        idade--;
+    }
+
+    return idade;
+}
+
+int main() {
+    char nomeArquivoEntrada[100];
+    char nomeArquivoSaida[100];
+    FILE *arquivoEntrada;
+    FILE *arquivoSaida;
+    Pessoa pessoa;
+    int diaAtual, mesAtual, anoAtual;
+
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", nomeArquivoEntrada);
+
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", nomeArquivoSaida);
+
+    arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    arquivoSaida = fopen(nomeArquivoSaida, "w");
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        fclose(arquivoEntrada);
+        return 1;
+    }
+
+    printf("Digite a data de hoje (DD MM AAAA): ");
+    scanf("%d %d %d", &diaAtual, &mesAtual, &anoAtual);
+
+    while (fscanf(arquivoEntrada, "%s %d %d %d", pessoa.nome, &pessoa.dia, &pessoa.mes, &pessoa.ano) == 4) {
+        int idade = calcularIdade(diaAtual, mesAtual, anoAtual, pessoa.dia, pessoa.mes, pessoa.ano);
+        fprintf(arquivoSaida, "%s %d\n", pessoa.nome, idade);
+    }
+
+    fclose(arquivoEntrada);
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 15
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    char nome[41];
+    int anoNascimento;
+} Pessoa;
+
+void escreverIdade(int anoCorrente, int anoNascimento, FILE *arquivoSaida) {
+    int idade = anoCorrente - anoNascimento;
+
+    if (idade < 18) {
+        fprintf(arquivoSaida, "Menor de idade\n");
+    } else if (idade > 18) {
+        fprintf(arquivoSaida, "Maior de idade\n");
+    } else {
+        fprintf(arquivoSaida, "Entrando na maior idade\n");
+    }
+}
+
+int main() {
+    int anoCorrente;
+    char nomeArquivoEntrada[100];
+    char nomeArquivoSaida[100];
+    FILE *arquivoEntrada;
+    FILE *arquivoSaida;
+    Pessoa pessoa;
+
+    printf("Digite o ano corrente: ");
+    scanf("%d", &anoCorrente);
+
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", nomeArquivoEntrada);
+
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", nomeArquivoSaida);
+
+    arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    arquivoSaida = fopen(nomeArquivoSaida, "w");
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        fclose(arquivoEntrada);
+        return 1;
+    }
+
+    while (fscanf(arquivoEntrada, "%40s %d", pessoa.nome, &pessoa.anoNascimento) == 2) {
+        fprintf(arquivoSaida, "%s - ", pessoa.nome);
+        escreverIdade(anoCorrente, pessoa.anoNascimento, arquivoSaida);
+    }
+
+    fclose(arquivoEntrada);
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 16
+/*
+#include <stdio.h>
+
+void decimalParaBinario(int decimal, char *binario) {
+    int indice = 0;
+
+    // Caso especial para o valor zero
+    if (decimal == 0) {
+        binario[indice++] = '0';
+    } else {
+        // Converter o número decimal para binário
+        while (decimal > 0) {
+            int resto = decimal % 2;
+            binario[indice++] = resto + '0';
+            decimal /= 2;
+        }
+    }
+
+    // Inverter a sequência binária
+    for (int i = 0; i < indice / 2; i++) {
+        char temp = binario[i];
+        binario[i] = binario[indice - i - 1];
+        binario[indice - i - 1] = temp;
+    }
+
+    // Adicionar o caractere de terminação da string
+    binario[indice] = '\0';
+}
+
+int main() {
+    int numeros[10];
+    char binario[33]; // Tamanho máximo para um número de 32 bits + 1 para o caractere de terminação
+    FILE *arquivo;
+    char nomeArquivo[] = "binario.txt";
+
+    // Ler os números do usuário
+    printf("Digite 10 números:\n");
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &numeros[i]);
+    }
+
+    // Abrir o arquivo para escrita
+    arquivo = fopen(nomeArquivo, "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo para escrita.\n");
+        return 1;
+    }
+
+    // Converter e gravar os números em binário
+    for (int i = 0; i < 10; i++) {
+        decimalParaBinario(numeros[i], binario);
+        fprintf(arquivo, "%s\n", binario);
+    }
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    printf("Arquivo binario.txt criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 17
+/*
+#include <stdio.h>
+
+#define MAX_DIM 100
+
+void zerarPosicoes(int matriz[MAX_DIM][MAX_DIM], int linhas, int colunas, int posicoes[MAX_DIM][2], int numPosicoes) {
+    for (int i = 0; i < numPosicoes; i++) {
+        int linha = posicoes[i][0];
+        int coluna = posicoes[i][1];
+
+        if (linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas) {
+            matriz[linha][coluna] = 0;
+        }
+    }
+}
+
+void imprimirMatriz(int matriz[MAX_DIM][MAX_DIM], int linhas, int colunas, FILE *arquivo) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            fprintf(arquivo, "%d ", matriz[i][j]);
+        }
+        fprintf(arquivo, "\n");
+    }
+}
+
+int main() {
+    int matriz[MAX_DIM][MAX_DIM];
+    int linhas, colunas, numPosicoes;
+    int posicoes[MAX_DIM][2];
+    FILE *arquivoEntrada, *arquivoSaida;
+    char nomeArquivoEntrada[] = "matriz.txt";
+    char nomeArquivoSaida[] = "matriz_modificada.txt";
+
+    // Abrir o arquivo de entrada
+    arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    // Ler as dimensões da matriz e o número de posições a serem anuladas
+    fscanf(arquivoEntrada, "%d %d %d", &linhas, &colunas, &numPosicoes);
+
+    // Ler as posições a serem anuladas
+    for (int i = 0; i < numPosicoes; i++) {
+        fscanf(arquivoEntrada, "%d %d", &posicoes[i][0], &posicoes[i][1]);
+    }
+
+    // Fechar o arquivo de entrada
+    fclose(arquivoEntrada);
+
+    // Inicializar a matriz com 1 em todas as posições
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            matriz[i][j] = 1;
+        }
+    }
+
+    // Zerar as posições especificadas
+    zerarPosicoes(matriz, linhas, colunas, posicoes, numPosicoes);
+
+    // Abrir o arquivo de saída
+    arquivoSaida = fopen(nomeArquivoSaida, "w");
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        return 1;
+    }
+
+    // Imprimir a matriz modificada no arquivo de saída
+    imprimirMatriz(matriz, linhas, colunas, arquivoSaida);
+
+    // Fechar o arquivo de saída
+    fclose(arquivoSaida);
+
+    printf("Matriz modificada gravada no arquivo matriz_modificada.txt\n");
+
+    return 0;
+}
+*/
+
+//exercicio 18
+/*
+#include <stdio.h>
+
+#define MAX_PRODUTOS 100
+
+typedef struct {
+    char nome[50];
+    float preco;
+} Produto;
+
+float calcularTotalCompra(const Produto produtos[], int numProdutos) {
+    float total = 0.0;
+
+    for (int i = 0; i < numProdutos; i++) {
+        total += produtos[i].preco;
+    }
+
+    return total;
+}
+
+int main() {
+    char nomeArquivo[50];
+    Produto produtos[MAX_PRODUTOS];
+    int numProdutos = 0;
+
+    // Receber o nome do arquivo
+    printf("Digite o nome do arquivo: ");
+    scanf("%s", nomeArquivo);
+
+    // Abrir o arquivo
+    FILE* arquivo = fopen(nomeArquivo, "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Ler os produtos do arquivo
+    while (fscanf(arquivo, "%s %f", produtos[numProdutos].nome, &produtos[numProdutos].preco) == 2) {
+        numProdutos++;
+    }
+
+    // Calcular o total da compra
+    float totalCompra = calcularTotalCompra(produtos, numProdutos);
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    // Exibir o total da compra
+    printf("O total da compra e: %.2f\n", totalCompra);
+
+    return 0;
+}
+*/
+
+//exercicio 19
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_ALUNOS 100
+
+typedef struct {
+    char nome[50];
+    float nota;
+} Aluno;
+
+int main() {
+    char nomeArquivo[50];
+    Aluno alunos[MAX_ALUNOS];
+    int numAlunos = 0;
+    float maiorNota = 0.0;
+    int indiceMaiorNota = -1;
+
+    // Receber o nome do arquivo
+    printf("Digite o nome do arquivo: ");
+    scanf("%s", nomeArquivo);
+
+    // Abrir o arquivo
+    FILE* arquivo = fopen(nomeArquivo, "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Ler os alunos do arquivo
+    char linha[100];
+    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
+        // Verificar se a linha contém o padrão NOME: ... NOTA: ...
+        char* nome = strstr(linha, "NOME:");
+        char* nota = strstr(linha, "NOTA:");
+
+        if (nome != NULL && nota != NULL) {
+            // Extrair o nome e a nota do aluno
+            nome += 6; // Pular o "NOME: "
+            nota += 6; // Pular o "NOTA: "
+
+            // Remover possíveis espaços em branco antes do nome e da nota
+            while (*nome == ' ') {
+                nome++;
+            }
+            while (*nota == ' ') {
+                nota++;
+            }
+
+            // Remover o caractere de nova linha ('\n') do final da nota
+            char* posicaoNovaLinha = strchr(nota, '\n');
+            if (posicaoNovaLinha != NULL) {
+                *posicaoNovaLinha = '\0';
+            }
+
+            // Copiar o nome e a nota para a estrutura Aluno
+            strcpy(alunos[numAlunos].nome, nome);
+            alunos[numAlunos].nota = atof(nota);
+
+            // Verificar se a nota é a maior encontrada até o momento
+            if (alunos[numAlunos].nota > maiorNota) {
+                maiorNota = alunos[numAlunos].nota;
+                indiceMaiorNota = numAlunos;
+            }
+
+            numAlunos++;
+        }
+    }
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    // Exibir o nome e a nota do aluno com a maior nota
+    if (indiceMaiorNota != -1) {
+        printf("Aluno com maior nota:\n");
+        printf("Nome: %s\n", alunos[indiceMaiorNota].nome);
+        printf("Nota: %.2f\n", alunos[indiceMaiorNota].nota);
+    } else {
+        printf("Nenhum aluno encontrado.\n");
+    }
+
+    return 0;
+}
+*/
+
+//exercicio 20
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NOME 40
+
+int main() {
+    int numAlunos;
+
+    // Receber o número de alunos da disciplina
+    printf("Digite o número de alunos da disciplina: ");
+    scanf("%d", &numAlunos);
+
+    // Alocação dinâmica dos vetores para armazenar as informações dos alunos
+    char** nomes = (char**)malloc(numAlunos * sizeof(char*));
+    float* notas = (float*)malloc(numAlunos * sizeof(float));
+
+    // Verificar se a alocação de memória foi bem-sucedida
+    if (nomes == NULL || notas == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return 1;
+    }
+
+    // Receber os nomes e notas dos alunos
+    for (int i = 0; i < numAlunos; i++) {
+        nomes[i] = (char*)malloc((MAX_NOME + 1) * sizeof(char)); // +1 para o caractere nulo '\0'
+
+        printf("Digite o nome do aluno %d: ", i + 1);
+        scanf(" %[^\n]", nomes[i]);
+
+        printf("Digite a nota final do aluno %d: ", i + 1);
+        scanf("%f", &notas[i]);
+    }
+
+    // Criar o arquivo para armazenar as informações dos alunos
+    FILE* arquivo = fopen("alunos.txt", "w");
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo.\n");
+        return 1;
+    }
+
+    // Gravar as informações dos alunos no arquivo
+    for (int i = 0; i < numAlunos; i++) {
+        // Preencher o nome com espaços em branco até atingir 40 caracteres
+        int nomeLength = strlen(nomes[i]);
+        for (int j = nomeLength; j < MAX_NOME; j++) {
+            nomes[i][j] = ' ';
+        }
+        nomes[i][MAX_NOME] = '\0';
+
+        // Gravar o nome e a nota no arquivo
+        fprintf(arquivo, "%s %.2f\n", nomes[i], notas[i]);
+    }
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    // Liberar a memória alocada
+    for (int i = 0; i < numAlunos; i++) {
+        free(nomes[i]);
+    }
+    free(nomes);
+    free(notas);
+
+    printf("Arquivo 'alunos.txt' criado com sucesso!\n");
+
+    return 0;
+}
+*/
+
+//exercicio 21
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NOME 40
+
+typedef struct {
+    char nome[MAX_NOME + 1];
+    float nota;
+} Aluno;
+
+int main() {
+    int numAlunos;
+
+    // Receber o número de alunos da disciplina
+    printf("Digite o número de alunos da disciplina: ");
+    scanf("%d", &numAlunos);
+
+    // Alocação dinâmica da estrutura para armazenar as informações dos alunos
+    Aluno* alunos = (Aluno*)malloc(numAlunos * sizeof(Aluno));
+
+    // Verificar se a alocação de memória foi bem-sucedida
+    if (alunos == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return 1;
+    }
+
+    // Receber os nomes e notas dos alunos
+    for (int i = 0; i < numAlunos; i++) {
+        printf("Digite o nome do aluno %d: ", i + 1);
+        scanf(" %[^\n]", alunos[i].nome);
+
+        printf("Digite a nota final do aluno %d: ", i + 1);
+        scanf("%f", &alunos[i].nota);
+    }
+
+    // Criar o arquivo binário para armazenar as informações dos alunos
+    FILE* arquivo = fopen("alunos.bin", "wb");
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo.\n");
+        return 1;
+    }
+
+    // Gravar as informações dos alunos no arquivo binário
+    fwrite(alunos, sizeof(Aluno), numAlunos, arquivo);
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    // Ler o arquivo binário e encontrar o aluno com a maior nota
+    float maiorNota = 0.0;
+    char nomeMaiorNota[MAX_NOME + 1];
+
+    arquivo = fopen("alunos.bin", "rb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    Aluno aluno;
+    while (fread(&aluno, sizeof(Aluno), 1, arquivo) == 1) {
+        if (aluno.nota > maiorNota) {
+            maiorNota = aluno.nota;
+            strcpy(nomeMaiorNota, aluno.nome);
+        }
+    }
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    printf("O aluno com a maior nota é: %s\n", nomeMaiorNota);
+
+    // Liberar a memória alocada
+    free(alunos);
+
+    return 0;
+}
+*/
+
+//exercicio 22
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NOME 40
+
+typedef struct {
+    char nome[MAX_NOME + 1];
+    int notas[3];
+} Aluno;
+
+int compararNotas(const void* a, const void* b) {
+    const Aluno* alunoA = (const Aluno*)a;
+    const Aluno* alunoB = (const Aluno*)b;
+
+    int somaNotasA = alunoA->notas[0] + alunoA->notas[1] + alunoA->notas[2];
+    int somaNotasB = alunoB->notas[0] + alunoB->notas[1] + alunoB->notas[2];
+
+    if (somaNotasA < somaNotasB)
+        return -1;
+    else if (somaNotasA > somaNotasB)
+        return 1;
+    else
+        return 0;
+}
+
+int main() {
+    char nomeArquivoEntrada[100];
+    char nomeArquivoSaida[100];
+
+    // Receber o nome do arquivo de entrada
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", nomeArquivoEntrada);
+
+    // Receber o nome do arquivo de saída
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", nomeArquivoSaida);
+
+    // Abrir o arquivo de entrada
+    FILE* arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    // Contar o número de alunos no arquivo de entrada
+    int numAlunos = 0;
+    char linha[100];
+    while (fgets(linha, sizeof(linha), arquivoEntrada) != NULL) {
+        numAlunos++;
+    }
+
+    // Alocar dinamicamente um vetor para armazenar os alunos
+    Aluno* alunos = (Aluno*)malloc(numAlunos * sizeof(Aluno));
+    if (alunos == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return 1;
+    }
+
+    // Voltar ao início do arquivo de entrada
+    rewind(arquivoEntrada);
+
+    // Ler as informações dos alunos do arquivo de entrada
+    for (int i = 0; i < numAlunos; i++) {
+        fgets(linha, sizeof(linha), arquivoEntrada);
+
+        // Extrair o nome e as notas
+        strncpy(alunos[i].nome, linha, MAX_NOME);
+        alunos[i].nome[MAX_NOME] = '\0';  // Adicionar o terminador de string
+
+        sscanf(linha + MAX_NOME, "%d %d %d", &alunos[i].notas[0], &alunos[i].notas[1], &alunos[i].notas[2]);
+    }
+
+    // Fechar o arquivo de entrada
+    fclose(arquivoEntrada);
+
+    // Ordenar os alunos com base na soma das notas em ordem crescente
+    qsort(alunos, numAlunos, sizeof(Aluno), compararNotas);
+
+    // Abrir o arquivo de saída
+    FILE* arquivoSaida = fopen(nomeArquivoSaida, "w");
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        return 1;
+    }
+
+    // Escrever as informações dos alunos no arquivo de saída em ordem crescente
+    for (int i = 0; i < numAlunos; i++) {
+        fprintf(arquivoSaida, "%s %d %d %d\n", alunos[i].nome, alunos[i].notas[0], alunos[i].notas[1], alunos[i].notas[2]);
+    }
+
+    // Fechar o arquivo de saída
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída gerado com sucesso.\n");
+
+    // Liberar a memória alocada
+    free(alunos);
+
+    return 0;
+}
+*/
+
+//exercicio 23
+/*
+#include <stdio.h>
+
+typedef struct {
+    char profissao[50];
+    int tempoServico;
+} Funcionario;
+
+int main() {
+    Funcionario funcionarios[5];
+
+    // Ler os dados dos funcionários do usuário
+    printf("Digite os dados dos funcionários:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Funcionário %d:\n", i + 1);
+        printf("Profissão: ");
+        scanf("%s", funcionarios[i].profissao);
+        printf("Tempo de serviço (em anos): ");
+        scanf("%d", &funcionarios[i].tempoServico);
+    }
+
+    // Abrir o arquivo para escrita
+    FILE* arquivo = fopen("emp.txt", "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Gravar os dados dos funcionários no arquivo
+    for (int i = 0; i < 5; i++) {
+        fprintf(arquivo, "%s %d\n", funcionarios[i].profissao, funcionarios[i].tempoServico);
+    }
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    // Abrir o arquivo para leitura
+    arquivo = fopen("emp.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Ler os dados dos funcionários do arquivo e exibi-los na tela
+    printf("\nDados dos funcionários lidos do arquivo:\n");
+    for (int i = 0; i < 5; i++) {
+        fscanf(arquivo, "%s %d", funcionarios[i].profissao, &funcionarios[i].tempoServico);
+        printf("Funcionário %d:\n", i + 1);
+        printf("Profissão: %s\n", funcionarios[i].profissao);
+        printf("Tempo de serviço (em anos): %d\n", funcionarios[i].tempoServico);
+    }
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    return 0;
+}
+*/
+
+//exercicio 24
+/*
+#include <stdio.h>
+
+typedef struct {
+    int codigo;
+    char descricao[50];
+    int quantidade;
+} Produto;
+
+void entradaProduto(Produto* produto) {
+    printf("Código: ");
+    scanf("%d", &produto->codigo);
+    printf("Descrição: ");
+    scanf("%s", produto->descricao);
+    printf("Quantidade: ");
+    scanf("%d", &produto->quantidade);
+}
+
+void retiradaProduto(Produto* produto) {
+    int quantidadeRetirada;
+    printf("Quantidade a ser retirada: ");
+    scanf("%d", &quantidadeRetirada);
+    if (quantidadeRetirada > produto->quantidade) {
+        printf("Quantidade indisponível.\n");
+    } else {
+        produto->quantidade -= quantidadeRetirada;
+        printf("Retirada realizada com sucesso.\n");
+    }
+}
+
+void relatorioGeral(Produto* produtos, int numProdutos) {
+    printf("Relatório Geral:\n");
+    for (int i = 0; i < numProdutos; i++) {
+        printf("Código: %d\n", produtos[i].codigo);
+        printf("Descrição: %s\n", produtos[i].descricao);
+        printf("Quantidade: %d\n", produtos[i].quantidade);
+        printf("--------------------\n");
+    }
+}
+
+void relatorioIndisponiveis(Produto* produtos, int numProdutos) {
+    printf("Relatório de Produtos Indisponíveis:\n");
+    for (int i = 0; i < numProdutos; i++) {
+        if (produtos[i].quantidade == 0) {
+            printf("Código: %d\n", produtos[i].codigo);
+            printf("Descrição: %s\n", produtos[i].descricao);
+            printf("--------------------\n");
+        }
+    }
+}
+
+int main() {
+    int opcao;
+    Produto produtos[100];
+    int numProdutos = 0;
+
+    do {
+        printf("=== Controle de Mercadorias ===\n");
+        printf("1. Entrada de Produto\n");
+        printf("2. Retirada de Produto\n");
+        printf("3. Relatório Geral\n");
+        printf("4. Relatório de Produtos Indisponíveis\n");
+        printf("0. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                entradaProduto(&produtos[numProdutos]);
+                numProdutos++;
+                break;
+            case 2:
+                retiradaProduto(&produtos[numProdutos]);
+                break;
+            case 3:
+                relatorioGeral(produtos, numProdutos);
+                break;
+            case 4:
+                relatorioIndisponiveis(produtos, numProdutos);
+                break;
+            case 0:
+                printf("Encerrando o programa...\n");
+                break;
+            default:
+                printf("Opção inválida.\n");
+        }
+
+        printf("\n");
+    } while (opcao != 0);
+
+    // Abrir o arquivo para escrita em modo binário
+    FILE* arquivo = fopen("produtos.bin", "wb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Gravar os dados dos produtos no arquivo
+    fwrite(produtos, sizeof(Produto), numProdutos, arquivo);
+
+    // Fechar o arquivo
+    fclose(arquivo);
+
+    return 0;
+}
+*/
+
+//exercicio 25
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_CONTATOS 100
+
+typedef struct {
+    char nome[50];
+    char telefone[20];
+    int diaAniversario;
+    int mesAniversario;
+} Contato;
+
+void limparBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
+}
+
+void inserirContato(Contato *agenda, int *numContatos) {
+    if (*numContatos >= MAX_CONTATOS) {
+        printf("A agenda está cheia.\n");
+        return;
+    }
+
+    Contato novoContato;
+
+    printf("Nome: ");
+    fgets(novoContato.nome, sizeof(novoContato.nome), stdin);
+    novoContato.nome[strcspn(novoContato.nome, "\n")] = '\0';
+
+    printf("Telefone: ");
+    fgets(novoContato.telefone, sizeof(novoContato.telefone), stdin);
+    novoContato.telefone[strcspn(novoContato.telefone, "\n")] = '\0';
+
+    printf("Dia do Aniversário: ");
+    scanf("%d", &novoContato.diaAniversario);
+
+    printf("Mês do Aniversário: ");
+    scanf("%d", &novoContato.mesAniversario);
+
+    agenda[*numContatos] = novoContato;
+    (*numContatos)++;
+
+    printf("Contato inserido com sucesso.\n");
+}
+
+void removerContato(Contato *agenda, int *numContatos) {
+    if (*numContatos <= 0) {
+        printf("A agenda está vazia.\n");
+        return;
+    }
+
+    char nome[50];
+    printf("Digite o nome do contato a ser removido: ");
+    limparBuffer();
+    fgets(nome, sizeof(nome), stdin);
+    nome[strcspn(nome, "\n")] = '\0';
+
+    int i, posicao = -1;
+    for (i = 0; i < *numContatos; i++) {
+        if (strcmp(agenda[i].nome, nome) == 0) {
+            posicao = i;
+            break;
+        }
+    }
+
+    if (posicao == -1) {
+        printf("Contato não encontrado.\n");
+    } else {
+        for (i = posicao; i < *numContatos - 1; i++) {
+            agenda[i] = agenda[i + 1];
+        }
+        (*numContatos)--;
+        printf("Contato removido com sucesso.\n");
+    }
+}
+
+void pesquisarContato(Contato *agenda, int numContatos) {
+    if (numContatos <= 0) {
+        printf("A agenda está vazia.\n");
+        return;
+    }
+
+    char nome[50];
+    printf("Digite o nome do contato a ser pesquisado: ");
+    limparBuffer();
+    fgets(nome, sizeof(nome), stdin);
+    nome[strcspn(nome, "\n")] = '\0';
+
+    int i;
+    for (i = 0; i < numContatos; i++) {
+        if (strcmp(agenda[i].nome, nome) == 0) {
+            printf("Contato encontrado:\n");
+            printf("Nome: %s\n", agenda[i].nome);
+            printf("Telefone: %s\n", agenda[i].telefone);
+            printf("Aniversário: %d/%d\n", agenda[i].diaAniversario, agenda[i].mesAniversario);
+            return;
+        }
+    }
+
+    printf("Contato não encontrado.\n");
+}
+
+void listarContatos(Contato *agenda, int numContatos) {
+    if (numContatos <= 0) {
+        printf("A agenda está vazia.\n");
+        return;
+    }
+
+    printf("Lista de Contatos:\n");
+    int i;
+    for (i = 0; i < numContatos; i++) {
+        printf("Nome: %s\n", agenda[i].nome);
+        printf("Telefone: %s\n", agenda[i].telefone);
+        printf("Aniversário: %d/%d\n", agenda[i].diaAniversario, agenda[i].mesAniversario);
+        printf("----------------------\n");
+    }
+}
+
+void listarContatosPorLetra(Contato *agenda, int numContatos) {
+    if (numContatos <= 0) {
+        printf("A agenda está vazia.\n");
+        return;
+    }
+
+    char letra;
+    printf("Digite a letra inicial dos contatos a serem listados: ");
+    limparBuffer();
+    scanf("%c", &letra);
+
+    printf("Contatos com a letra '%c':\n", letra);
+    int i;
+    for (i = 0; i < numContatos; i++) {
+        if (agenda[i].nome[0] == letra) {
+            printf("Nome: %s\n", agenda[i].nome);
+            printf("Telefone: %s\n", agenda[i].telefone);
+            printf("Aniversário: %d/%d\n", agenda[i].diaAniversario, agenda[i].mesAniversario);
+            printf("----------------------\n");
+        }
+    }
+}
+
+void listarAniversariantesMes(Contato *agenda, int numContatos) {
+    if (numContatos <= 0) {
+        printf("A agenda está vazia.\n");
+        return;
+    }
+
+    int mes;
+    printf("Digite o mês para listar os aniversariantes: ");
+    scanf("%d", &mes);
+
+    printf("Aniversariantes do mês %d:\n", mes);
+    int i;
+    for (i = 0; i < numContatos; i++) {
+        if (agenda[i].mesAniversario == mes) {
+            printf("Nome: %s\n", agenda[i].nome);
+            printf("Telefone: %s\n", agenda[i].telefone);
+            printf("Aniversário: %d/%d\n", agenda[i].diaAniversario, agenda[i].mesAniversario);
+            printf("----------------------\n");
+        }
+    }
+}
+
+void salvarContatosArquivo(Contato *agenda, int numContatos) {
+    FILE *arquivo;
+    arquivo = fopen("contatos.bin", "wb");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    fwrite(&numContatos, sizeof(int), 1, arquivo);
+    fwrite(agenda, sizeof(Contato), numContatos, arquivo);
+
+    fclose(arquivo);
+    printf("Contatos salvos no arquivo.\n");
+}
+
+void carregarContatosArquivo(Contato *agenda, int *numContatos) {
+    FILE *arquivo;
+    arquivo = fopen("contatos.bin", "rb");
+
+    if (arquivo == NULL) {
+        printf("Nenhum contato encontrado.\n");
+        return;
+    }
+
+    fread(numContatos, sizeof(int), 1, arquivo);
+    fread(agenda, sizeof(Contato), *numContatos, arquivo);
+
+    fclose(arquivo);
+}
+
+int main() {
+    Contato agenda[MAX_CONTATOS];
+    int numContatos = 0;
+
+    carregarContatosArquivo(agenda, &numContatos);
+
+    int opcao;
+    do {
+        printf("=====================================\n");
+        printf("           Agenda de Contatos         \n");
+        printf("=====================================\n");
+        printf("1 - Inserir Contato\n");
+        printf("2 - Remover Contato\n");
+        printf("3 - Pesquisar Contato por Nome\n");
+        printf("4 - Listar Todos os Contatos\n");
+        printf("5 - Listar Contatos por Letra Inicial\n");
+        printf("6 - Listar Aniversariantes do Mês\n");
+        printf("0 - Sair\n");
+        printf("=====================================\n");
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 0:
+                salvarContatosArquivo(agenda, numContatos);
+                printf("Agenda encerrada.\n");
+                break;
+            case 1:
+                inserirContato(agenda, &numContatos);
+                break;
+            case 2:
+                removerContato(agenda, &numContatos);
+                break;
+            case 3:
+                pesquisarContato(agenda, numContatos);
+                break;
+            case 4:
+                listarContatos(agenda, numContatos);
+                break;
+            case 5:
+                listarContatosPorLetra(agenda, numContatos);
+                break;
+            case 6:
+                listarAniversariantesMes(agenda, numContatos);
+                break;
+            default:
+                printf("Opção inválida.\n");
+                break;
+        }
+
+        printf("\n");
+
+    } while (opcao != 0);
+
+    return 0;
+}
+*/
+
+//exercicio 26
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int matricula;
+    char sobrenome[50];
+    int anoNascimento;
+} Aluno;
+
+void salvarAlunos(Aluno *alunos, int numAlunos) {
+    FILE *arquivo;
+    arquivo = fopen("alunos.txt", "w");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    int i;
+    for (i = 0; i < numAlunos; i++) {
+        fprintf(arquivo, "%d %s %d\n", alunos[i].matricula, alunos[i].sobrenome, alunos[i].anoNascimento);
+    }
+
+    fclose(arquivo);
+    printf("Dados dos alunos salvos no arquivo.\n");
+}
+
+void carregarAlunos(Aluno **alunos, int *numAlunos) {
+    FILE *arquivo;
+    arquivo = fopen("alunos.txt", "r");
+
+    if (arquivo == NULL) {
+        printf("Nenhum aluno encontrado.\n");
+        return;
+    }
+
+    int matricula, anoNascimento;
+    char sobrenome[50];
+
+    while (fscanf(arquivo, "%d %s %d", &matricula, sobrenome, &anoNascimento) == 3) {
+        *alunos = realloc(*alunos, (*numAlunos + 1) * sizeof(Aluno));
+
+        (*alunos)[*numAlunos].matricula = matricula;
+        strcpy((*alunos)[*numAlunos].sobrenome, sobrenome);
+        (*alunos)[*numAlunos].anoNascimento = anoNascimento;
+
+        (*numAlunos)++;
+    }
+
+    fclose(arquivo);
+    printf("Dados dos alunos carregados do arquivo.\n");
+}
+
+void cadastrarAlunos(Aluno **alunos, int *numAlunos) {
+    int num;
+    printf("Digite o número de alunos a serem cadastrados: ");
+    scanf("%d", &num);
+
+    *alunos = malloc(num * sizeof(Aluno));
+
+    int i;
+    for (i = 0; i < num; i++) {
+        printf("Aluno %d:\n", i+1);
+        printf("Matrícula: ");
+        scanf("%d", &(*alunos)[i].matricula);
+        printf("Sobrenome: ");
+        scanf("%s", (*alunos)[i].sobrenome);
+        printf("Ano de Nascimento: ");
+        scanf("%d", &(*alunos)[i].anoNascimento);
+    }
+
+    *numAlunos = num;
+}
+
+void mostrarAlunos(Aluno *alunos, int numAlunos) {
+    if (numAlunos <= 0) {
+        printf("Nenhum aluno cadastrado.\n");
+        return;
+    }
+
+    int i;
+    for (i = 0; i < numAlunos; i++) {
+        printf("Aluno %d:\n", i+1);
+        printf("Matrícula: %d\n", alunos[i].matricula);
+        printf("Sobrenome: %s\n", alunos[i].sobrenome);
+        printf("Ano de Nascimento: %d\n", alunos[i].anoNascimento);
+        printf("----------------------\n");
+    }
+}
+
+void liberarMemoria(Aluno *alunos) {
+    free(alunos);
+    printf("Memória liberada.\n");
+}
+
+int main() {
+    Aluno *alunos = NULL;
+    int numAlunos = 0;
+
+    int opcao;
+
+    do {
+        printf("=====================================\n");
+        printf("        Cadastro de Alunos           \n");
+        printf("=====================================\n");
+        printf("1 - Carregar Alunos do Arquivo\n");
+        printf("2 - Cadastrar Alunos\n");
+        printf("3 - Mostrar Alunos\n");
+        printf("0 - Sair\n");
+        printf("=====================================\n");
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 0:
+                liberarMemoria(alunos);
+                printf("Programa encerrado.\n");
+                break;
+            case 1:
+                carregarAlunos(&alunos, &numAlunos);
+                break;
+            case 2:
+                cadastrarAlunos(&alunos, &numAlunos);
+                break;
+            case 3:
+                mostrarAlunos(alunos, numAlunos);
+                break;
+            default:
+                printf("Opção inválida.\n");
+                break;
+        }
+
+        printf("\n");
+
+    } while (opcao != 0);
+
+    salvarAlunos(alunos, numAlunos);
+
+    return 0;
+}
+*/
+
+//exercicio 26
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    char nome[50];
+    float nota1;
+    float nota2;
+    float media;
+} Aluno;
+
+Aluno *turma;
+int numAlunos;
+int turmaDefinida = 0;
+
+void definirTurma() {
+    printf("Digite o número de alunos da turma: ");
+    scanf("%d", &numAlunos);
+
+    turma = (Aluno *) malloc(numAlunos * sizeof(Aluno));
+
+    turmaDefinida = 1;
+
+    printf("Informações da turma definidas.\n");
+}
+
+void inserirAluno() {
+    if (!turmaDefinida) {
+        printf("As informações da turma não foram definidas.\n");
+        return;
+    }
+
+    if (numAlunos <= 0) {
+        printf("Número inválido de alunos.\n");
+        return;
+    }
+
+    printf("Digite o nome do aluno: ");
+    scanf("%s", turma[numAlunos].nome);
+    printf("Digite a nota 1 do aluno: ");
+    scanf("%f", &turma[numAlunos].nota1);
+    printf("Digite a nota 2 do aluno: ");
+    scanf("%f", &turma[numAlunos].nota2);
+
+    turma[numAlunos].media = (turma[numAlunos].nota1 + turma[numAlunos].nota2) / 2;
+
+    printf("Aluno inserido com sucesso.\n");
+    numAlunos++;
+}
+
+void exibirAlunos() {
+    if (!turmaDefinida) {
+        printf("As informações da turma não foram definidas.\n");
+        return;
+    }
+
+    if (numAlunos <= 0) {
+        printf("Nenhum aluno cadastrado.\n");
+        return;
+    }
+
+    printf("---- Alunos e Médias ----\n");
+    int i;
+    for (i = 0; i < numAlunos; i++) {
+        printf("Nome: %s\n", turma[i].nome);
+        printf("Nota 1: %.2f\n", turma[i].nota1);
+        printf("Nota 2: %.2f\n", turma[i].nota2);
+        printf("Média: %.2f\n", turma[i].media);
+        printf("------------------------\n");
+    }
+}
+
+void exibirAprovados() {
+    if (!turmaDefinida) {
+        printf("As informações da turma não foram definidas.\n");
+        return;
+    }
+
+    if (numAlunos <= 0) {
+        printf("Nenhum aluno cadastrado.\n");
+        return;
+    }
+
+    printf("---- Alunos Aprovados ----\n");
+    int i;
+    for (i = 0; i < numAlunos; i++) {
+        if (turma[i].media >= 6.0) {
+            printf("Nome: %s\n", turma[i].nome);
+            printf("Média: %.2f\n", turma[i].media);
+            printf("------------------------\n");
+        }
+    }
+}
+
+void exibirReprovados() {
+    if (!turmaDefinida) {
+        printf("As informações da turma não foram definidas.\n");
+        return;
+    }
+
+    if (numAlunos <= 0) {
+        printf("Nenhum aluno cadastrado.\n");
+        return;
+    }
+
+    printf("---- Alunos Reprovados ----\n");
+    int i;
+    for (i = 0; i < numAlunos; i++) {
+        if (turma[i].media < 6.0) {
+            printf("Nome: %s\n", turma[i].nome);
+            printf("Média: %.2f\n", turma[i].media);
+            printf("--------------------------\n");
+        }
+    }
+}
+
+void salvarDados() {
+    if (!turmaDefinida) {
+        printf("As informações da turma não foram definidas.\n");
+        return;
+    }
+
+    FILE *arquivo = fopen("dados.txt", "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    int i;
+    for (i = 0; i < numAlunos; i++) {
+        fprintf(arquivo, "%s %.2f %.2f\n", turma[i].nome, turma[i].nota1, turma[i].nota2);
+    }
+
+    fclose(arquivo);
+
+    printf("Dados salvos em disco.\n");
+}
+
+int main() {
+    int opcao;
+
+    do {
+        printf("=====================================\n");
+        printf("    Gerenciamento de Notas da Turma  \n");
+        printf("=====================================\n");
+        printf("1 - Definir Informações da Turma\n");
+        printf("2 - Inserir Aluno e Notas\n");
+        printf("3 - Exibir Alunos e Médias\n");
+        printf("4 - Exibir Alunos Aprovados\n");
+        printf("5 - Exibir Alunos Reprovados\n");
+        printf("6 - Salvar Dados em Disco\n");
+        printf("0 - Sair do Programa\n");
+        printf("=====================================\n");
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 0:
+                free(turma);
+                printf("Programa encerrado.\n");
+                break;
+            case 1:
+                definirTurma();
+                break;
+            case 2:
+                inserirAluno();
+                break;
+            case 3:
+                exibirAlunos();
+                break;
+            case 4:
+                exibirAprovados();
+                break;
+            case 5:
+                exibirReprovados();
+                break;
+            case 6:
+                salvarDados();
+                break;
+            default:
+                printf("Opção inválida.\n");
+                break;
+        }
+
+        printf("\n");
+
+    } while (opcao != 0);
+
+    return 0;
+}
+*/
+
+//exercicio 28
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_CHAR 30
+
+void reverseString(char *str) {
+    int length = strlen(str);
+    int i, j;
+    char temp;
+
+    for (i = 0, j = length - 1; i < j; i++, j--) {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+    }
+}
+
+int main() {
+    char nomeArquivoEntrada[50];
+    char nomeArquivoSaida[50];
+    FILE *arquivoEntrada;
+    FILE *arquivoSaida;
+
+    // Obtém o nome do arquivo de entrada
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", nomeArquivoEntrada);
+
+    // Obtém o nome do arquivo de saída
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", nomeArquivoSaida);
+
+    // Abre o arquivo de entrada para leitura
+    arquivoEntrada = fopen(nomeArquivoEntrada, "r");
+    if (arquivoEntrada == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+        return 1;
+    }
+
+    // Abre o arquivo de saída para escrita
+    arquivoSaida = fopen(nomeArquivoSaida, "w");
+    if (arquivoSaida == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+        return 1;
+    }
+
+    // Lê o arquivo de entrada linha por linha
+    char linha[MAX_CHAR + 1];
+    while (fgets(linha, sizeof(linha), arquivoEntrada) != NULL) {
+        // Remove o caractere de nova linha (\n)
+        linha[strcspn(linha, "\n")] = '\0';
+
+        // Inverte a linha
+        reverseString(linha);
+
+        // Escreve a linha invertida no arquivo de saída
+        fprintf(arquivoSaida, "%s\n", linha);
+    }
+
+    // Fecha os arquivos
+    fclose(arquivoEntrada);
+    fclose(arquivoSaida);
+
+    printf("Arquivo de saída criado com sucesso.\n");
+
+    return 0;
+}
+*/
+
+//exercicio 29
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Registro {
+    int codigo;
+    char nome[50];
+    float valor;
+    int mes;
+};
+
+void criarArquivo(char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "wb");
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo.\n");
+        return;
+    }
+    fclose(arquivo);
+    printf("Arquivo criado com sucesso.\n");
+}
+
+void incluirRegistro(char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "ab");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    struct Registro registro;
+
+    printf("Informe o código: ");
+    scanf("%d", &registro.codigo);
+    printf("Informe o nome: ");
+    scanf(" %[^\n]", registro.nome);
+    printf("Informe o valor: ");
+    scanf("%f", &registro.valor);
+    printf("Informe o mês: ");
+    scanf("%d", &registro.mes);
+
+    fwrite(&registro, sizeof(struct Registro), 1, arquivo);
+
+    fclose(arquivo);
+    printf("Registro incluído com sucesso.\n");
+}
+
+void excluirRegistro(char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "rb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    int codigo, mes;
+
+    printf("Informe o código: ");
+    scanf("%d", &codigo);
+    printf("Informe o mês: ");
+    scanf("%d", &mes);
+
+    FILE *arquivoTemp = fopen("temp.bin", "wb");
+    if (arquivoTemp == NULL) {
+        printf("Erro ao criar o arquivo temporário.\n");
+        fclose(arquivo);
+        return;
+    }
+
+    struct Registro registro;
+
+    while (fread(&registro, sizeof(struct Registro), 1, arquivo)) {
+        if (registro.codigo != codigo || registro.mes != mes) {
+            fwrite(&registro, sizeof(struct Registro), 1, arquivoTemp);
+        }
+    }
+
+    fclose(arquivo);
+    fclose(arquivoTemp);
+
+    remove(nomeArquivo);
+    rename("temp.bin", nomeArquivo);
+
+    printf("Registro excluído com sucesso.\n");
+}
+
+void alterarValor(char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "rb+");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    int codigo, mes;
+    float novoValor;
+
+    printf("Informe o código: ");
+    scanf("%d", &codigo);
+    printf("Informe o mês: ");
+    scanf("%d", &mes);
+    printf("Informe o novo valor: ");
+    scanf("%f", &novoValor);
+
+    struct Registro registro;
+
+    while (fread(&registro, sizeof(struct Registro), 1, arquivo)) {
+        if (registro.codigo == codigo && registro.mes == mes) {
+            registro.valor = novoValor;
+            fseek(arquivo, -sizeof(struct Registro), SEEK_CUR);
+            fwrite(&registro, sizeof(struct Registro), 1, arquivo);
+            break;
+        }
+    }
+
+    fclose(arquivo);
+
+    printf("Valor alterado com sucesso.\n");
+}
+
+void imprimirRegistros(char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "rb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    struct Registro registro;
+
+    printf("Registros:\n");
+    while (fread(&registro, sizeof(struct Registro), 1, arquivo)) {
+        printf("Código: %d, Nome: %s, Valor: %.2f, Mês: %d\n",
+               registro.codigo, registro.nome, registro.valor, registro.mes);
+    }
+
+    fclose(arquivo);
+}
+
+void excluirArquivo(char *nomeArquivo) {
+    if (remove(nomeArquivo) == 0) {
+        printf("Arquivo excluído com sucesso.\n");
+    } else {
+        printf("Erro ao excluir o arquivo.\n");
+    }
+}
+
+int main() {
+    char nomeArquivo[50];
+    int opcao;
+
+    printf("Digite o nome do arquivo: ");
+    scanf("%s", nomeArquivo);
+
+    while (1) {
+        printf("\nMenu:\n");
+        printf("1. Criar o arquivo de dados\n");
+        printf("2. Incluir um determinado registro no arquivo\n");
+        printf("3. Excluir um determinado vendedor no arquivo\n");
+        printf("4. Alterar o valor de uma venda no arquivo\n");
+        printf("5. Imprimir os registros na saída padrão\n");
+        printf("6. Excluir o arquivo de dados\n");
+        printf("7. Finalizar o programa\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                criarArquivo(nomeArquivo);
+                break;
+            case 2:
+                incluirRegistro(nomeArquivo);
+                break;
+            case 3:
+                excluirRegistro(nomeArquivo);
+                break;
+            case 4:
+                alterarValor(nomeArquivo);
+                break;
+            case 5:
+                imprimirRegistros(nomeArquivo);
+                break;
+            case 6:
+                excluirArquivo(nomeArquivo);
+                break;
+            case 7:
+                printf("Programa finalizado.\n");
+                return 0;
+            default:
+                printf("Opção inválida.\n");
+        }
+    }
+
+    return 0;
+}
+*/
